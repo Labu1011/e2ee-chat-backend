@@ -1,6 +1,7 @@
 import express from 'express'
 import { config } from "dotenv";
 import authRoutes from './routes/auth.route.js'
+import cookieParser from 'cookie-parser'
 import connectDB from "./lib/db.js";
 
 config();
@@ -8,6 +9,7 @@ config();
 const app = express()
 
 app.use(express.json());
+app.use(cookieParser())
 
 app.get("/", (req, res) => {
     res.send("Welcome to the E2EE-Chat API.");
